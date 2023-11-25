@@ -1,0 +1,114 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快递管理系统 - {{ request.session.info.uname }}</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+    </style>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+            <ul class="nav navbar-nav">
+                {% if request.session.info.role == '1' %}
+                    <li><a class="check-prefix" href="/user/list/send">我发送的</a></li>
+                    <li><a class="check-prefix" href="/user/list/receive">我接受的</a></li>
+                    <li><a class="check-prefix" href="/user/order/add">创建快递</a></li>
+                {% elif request.session.info.role == '2' %}
+                    <li><a class="check-prefix" href="/courier/home">工作空间</a></li>
+                    <li><a class="check-prefix" href="/courier/managed/order">我处理的快递</a></li>
+                {% else %}
+                    <li><a class="check-prefix" href="/admin/user/list">普通用户管理</a></li>
+                    <li><a class="check-prefix" href="/admin/courier/list">快递员管理</a></li>
+                    <li><a class="check-prefix" href="/admin/order/total">快递总览</a></li>
+                {% endif %}
+            </ul>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        {% if request.session.info.role == '1' %}
+                        普通用户：
+                        {% elif request.session.info.role == '2' %}
+                        快递员：
+                        {% else %}
+                        管理员
+                        {% endif %}
+                        {{ request.session.info.uname }}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {% if request.session.info.role == '1' %}
+                            <li><a href="/user/personal/information/list">我的信息</a></li>
+                        {% elif request.session.info.role == '2' %}
+                            <li><a href="/courier/personal/information/list">我的信息</a></li>
+                        {% endif %}
+
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/logout/">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div>
+    {% block content %}{% endblock %}
+</div>
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+<script>
+    // 定义一个函数来检查字符串是否具有特定的前缀
+    function hasPrefix(str, prefix) {
+        return str.endsWith(prefix);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // 假设要检查的前缀是 '创建'
+
+        // 获取所有具有 'check-prefix' 类的元素
+        var links = document.querySelectorAll('.check-prefix');
+        var currentUrl = window.location.href;
+        //console.log(currentUrl);
+        // 遍历这些链接并检查它们的文本
+        links.forEach(function (link) {
+            var href = link.getAttribute('href');
+            var href1 = href + '/';
+            //console.log(href);
+
+            if (hasPrefix(currentUrl, href) || hasPrefix(currentUrl, href1)) {
+                link.parentNode.classList.add('active');
+            }
+        });
+    });
+</script>
+{% block js %}{% endblock %}
+</body>
+</html>
+
+

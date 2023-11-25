@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>跳转页面</title>
+</head>
+<body>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <!-- 输入框 -->
+      <input type="text" id="trackingNumber" class="form-control" placeholder="请输入快递单号">
+      <span class="input-group-btn">
+        <!-- 查询按钮 -->
+        <button class="btn btn-default" type="button" onclick="search()">查询</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+
+  <!-- JavaScript 代码 -->
+  <script>
+    function search() {
+      // 获取输入框的值
+      var trackingNumber = document.getElementById('trackingNumber').value;
+
+      // 构建新的 URL
+      var newUrl = '/courier/order/detail/' + encodeURIComponent(trackingNumber);
+
+      // 跳转到新的 URL
+      window.location.href = newUrl;
+    }
+  </script>
+</body>
+
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.4.1/css/bootstrap.min.css">
+    <style>
+    .wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    }
+
+    .wrapper .status_img {
+    margin-top: 22vh;
+    width: 318px;
+    height: 274px;
+    }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="status_img">
+        <img src="/static/img/404.png">
+    </div>
+    <div class="alert alert-danger" role="alert" style="margin-top:20px;width:50%;text-align: center;">
+        404:Page not found</br>
+
+        <p>{{ exception }}</p>
+    </div>
+    <div>
+        <span>
+            <a class="btn btn-primary btn" href="/login" style="margin-right:20px">返回主页</a>
+            <a class="btn btn-danger btn" href="/logout" style="margin-right:20px">退出登录</a>
+        </span>
+    </div>
+</div>
+</body>
+</html>
+
+

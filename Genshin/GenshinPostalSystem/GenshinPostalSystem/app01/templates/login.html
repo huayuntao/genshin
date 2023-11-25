@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        body {
+            margin: 0;
+            display: block;
+        }
+
+        .account {
+            width: 400px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-shadow: 5px 5px 20px #aaa;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .genshin-login1 {
+            min-width: 900px;
+            height: 100vh;
+            position: relative;
+        }
+
+        .genshin-login2 {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .genshin-login1 .sw-login-main {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 300px;
+            height: inherit;
+            overflow: hidden;
+            margin-right: 40px;
+        }
+
+        .login-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            right: 10%; /* 修改位置到左边 */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #337ab7;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #286090;
+        }
+
+        .login-form .checkbox,
+        .login-form .password-recovery {
+            margin-top: 10px;
+        }
+
+        .login-form .password-recovery {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+<div style="min-height: 850px; background: rgb(255, 255, 255); height: 906px;">
+    <div class="genshin-login1" style="min-height: 850px; overflow: hidden; height: 850px; top: 28px;">
+        <div class="genshin-login2" style="width: 100%; position: relative; max-width: 1920px; margin: 0px auto;">
+            <div class="genshin-login2" style="margin: 50px 50px 32px; color: rgb(35, 103, 177); font-size: 33px;"><img
+                    height="50px" src="/static/img/logo1.png" style="position: relative; top: 7px;">
+            </div>
+            <div class="genshin-login2" style="height: 480px;">
+                <div style="width: 100%; position: relative; background: url(&quot;/static/img/login1.png&quot;) left center / cover no-repeat; height: 480px;"></div>
+            </div>
+            <div class="login-form">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {{ field }}
+                            <span style="color: red;">{{ field.errors.0 }}</span>
+                        </div>
+                    {% endfor %}
+                    <input type="submit" value="登 录" class="btn btn-primary">
+                    <a style="float: right"
+                       class="btn btn-success
+    " href="/register/">注册</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

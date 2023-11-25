@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+
+        <div style="margin-bottom: 10px" class="clearfix">
+
+
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                {{ the_order_item.order_num }}  详情
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+
+                <tbody>
+                <tr>
+                    <th>订单ID</th>
+                    <td>{{ the_order_item.id }}</td>
+                </tr>
+                <tr>
+                    <th>订单编号</th>
+                    <td>{{ the_order_item.order_num }}</td>
+                </tr>
+                <tr>
+                    <th>收件人用户名</th>
+                    <td>{{ the_order_item.receiver__uname }}</td>
+                </tr>
+                <tr>
+                    <th>收件人真实姓名</th>
+                    <td>{{ the_order_item.receiver__real_name }}</td>
+                </tr>
+                <tr>
+                    <th>收件人手机号</th>
+                    <td>{{ the_order_item.receiver__phone_num }}</td>
+                </tr>
+                <tr>
+                    <th>发件人用户名</th>
+                    <td>{{ the_order_item.sender__uname }}</td>
+                </tr>
+                <tr>
+                    <th>发件人真实姓名</th>
+                    <td>{{ the_order_item.sender__real_name }}</td>
+                </tr>
+                <tr>
+                    <th>发件人手机号</th>
+                    <td>{{ the_order_item.sender__phone_num }}</td>
+                </tr>
+                <tr>
+                    <th>发送时间</th>
+                    <td>{{ the_order_item.send_time }}</td>
+                </tr>
+                <tr>
+                    <th>收件时间</th>
+                    <td>{{ the_order_item.receive_time }}</td>
+                </tr>
+                <tr>
+                    <th>发件地址</th>
+                    <td>{{ the_order_item.send_addr }}</td>
+                </tr>
+                <tr>
+                    <th>收件地址</th>
+                    <td>{{ the_order_item.receive_addr }}</td>
+                </tr>
+                <tr>
+                    <th>订单状态</th>
+                    <td>
+                            {% if the_order_item.status == 1 %}
+                                <span style="background-color: #edd85c">派送中</span>
+                            {% elif the_order_item.status == 2 %}
+                                <span style="background-color: #ff6969">已送达</span>
+                            {% else %}
+                                <span style="background-color: #6fff6f">已取货</span>
+                            {% endif %}
+                        </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+
+    {% if request.session.info.role == '1' %}
+        <div style="height: 30px">
+        <a style="float: right"
+                class="btn btn-primary
+        " href="/user/change/status/to/received/{{ the_order_item.id }}/">确认取件</a>
+        </div>
+    {% elif request.session.info.role == '2' %}
+        <div style="height: 30px">
+        <a style="float: right"
+                class="btn btn-primary
+        " href="/courier/add/information/to/order/{{ the_order_item.id }}/">添加状态</a>
+        <a style="float: right"
+                class="btn btn-primary
+        " href="/courier/change/status/to/served/{{ the_order_item.id }}/">确认送达</a>
+        </div>
+    {% else %}
+        <span>
+            <a style="float: right"
+                    class="btn btn-primary
+            btn-xs" href="/admin/order/edit/{{ the_order_item.id }}/">编辑订单信息</a>
+        </span>
+    {% endif %}
+
+
+
+            <div style="margin-top: 20px">
+                订单状态：
+                {% for item in the_order_status_set %}
+                    <div>
+                    {{ item.time }}  :  {{ item.information }} : {{ item.courier__real_name }}
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+
+    </div>
+
+{% endblock %}

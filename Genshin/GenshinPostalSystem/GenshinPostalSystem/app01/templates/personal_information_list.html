@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+
+        <div style="margin-bottom: 10px" class="clearfix">
+            {% if role == '1' %}
+                <a class="btn btn-success" href="/user/personal/information/edit">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    编辑信息
+                </a>
+                <a class="btn btn-success" href="/user/personal/information/change/password">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    修改密码
+                </a>
+                {% elif role == '2' %}
+                 <a class="btn btn-success" href="/courier/personal/information/edit">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    编辑信息
+                </a>
+                <a class="btn btn-success" href="/courier/personal/information/change/password">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    修改密码
+                </a>
+            {% endif %}
+
+
+
+
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                {{ the_order_item.order_num }} 详情
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+
+                <tbody>
+                <tr>
+                    <th>用户名</th>
+                    <td>{{ queryset.uname }}</td>
+                </tr>
+                <tr>
+                    <th>真实姓名</th>
+                    <td>{{ queryset.real_name }}</td>
+                </tr>
+                <tr>
+                    <th>电话</th>
+                    <td>{{ queryset.phone_num }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+{% endblock %}
