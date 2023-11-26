@@ -27,17 +27,20 @@
         <div style="margin-bottom: 10px" class="clearfix">
             <a class="btn btn-success" href="/admin/user/add">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+
                 添加用户
             </a>
 
             <div style="float: right;width: 300px;">
                 <form method="get">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search for..."
+                        <input type="text" name="q" class="form-control" placeholder="Genshin is waiting for you..."
                                value="{{ search_data }}">
                         <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                 <img src="/static/img/move3.gif" alt="Search" style="width: 20px; height: 20px;">
+                            </span>
                         </button>
                       </span>
                     </div>
@@ -48,7 +51,9 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true">
+                    <img src="/static/img/move5.gif" alt="Search" style="width: 30px; height: 25px;">
+                </span>
                 靓号列表
             </div>
 
@@ -56,10 +61,10 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>用户名</th>
-                    <th>真实姓名</th>
-                    <th>电话号码</th>
-                    <th>操作</th>
+                    <th><img src="/static/img/shin1.png" style="width: 30px; height: 30px;">用户名</th>
+                    <th><img src="/static/img/shin2.png" style="width: 30px; height: 30px;">真实姓名</th>
+                    <th><img src="/static/img/shin3.png" style="width: 30px; height: 30px;">电话号码</th>
+                    <th><img src="/static/img/shin4.png" style="width: 30px; height: 30px;">操作</th>
                 </tr>
                 </thead>
                 <tbody>
