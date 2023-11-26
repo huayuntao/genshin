@@ -1,39 +1,52 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>跳转页面</title>
+    <style>
+        /* 添加背景图片 */
+        body {
+            background-image: url('/static/img/reg.png'); /* 替换为你的背景图片链接 */
+            background-size: cover; /* 背景图片覆盖整个页面 */
+        }
+
+        /* 让内容居中显示 */
+        .center-container {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 全屏高度 */
+        }
+
+        .input-group {
+            margin-top: -50px; /* 如果需要，调整此值以在垂直方向上微调位置 */
+        }
+    </style>
 </head>
 <body>
-  <div class="col-lg-6">
-    <div class="input-group">
-      <!-- 输入框 -->
-      <input type="text" id="trackingNumber" class="form-control" placeholder="请输入快递单号">
-      <span class="input-group-btn">
-        <!-- 查询按钮 -->
-        <button class="btn btn-default" type="button" onclick="search()">查询</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
+    <div class="center-container">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <!-- 输入框 -->
+                <input type="text" id="trackingNumber" class="form-control" placeholder="请输入快递单号" style="height: 50px">
+                <span class="input-group-btn">
+                    <!-- 查询按钮 -->
+                    <button class="btn btn-default" type="button" onclick="search()" style="height: 50px">查询</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
 
-  <!-- JavaScript 代码 -->
-  <script>
-    function search() {
-      // 获取输入框的值
-      var trackingNumber = document.getElementById('trackingNumber').value;
-
-      // 构建新的 URL
-      var newUrl = '/courier/order/detail/' + encodeURIComponent(trackingNumber);
-
-      // 跳转到新的 URL
-      window.location.href = newUrl;
-    }
-  </script>
+    <!-- JavaScript 代码 -->
+    <script>
+        function search() {
+            var trackingNumber = document.getElementById('trackingNumber').value;
+            var newUrl = '/courier/order/detail/' + encodeURIComponent(trackingNumber);
+            window.location.href = newUrl;
+        }
+    </script>
 </body>
-
 </html>
-
-
 {% endblock %}

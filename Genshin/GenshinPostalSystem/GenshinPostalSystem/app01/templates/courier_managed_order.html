@@ -1,26 +1,26 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>跳转页面</title>
+        <style>
+            /* 添加背景图片 */
+            body {
+                background-image: url('/static/img/reg2.png'); /* 替换为你的背景图片链接 */
+                background-size: cover; /* 背景图片覆盖整个页面 */
+            }
+
+        </style>
+    </head>
+    <body>
     <div class="container">
         <div style="margin-bottom: 10px" class="clearfix">
             <a class="btn btn-success" href="/admin/order/add">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                 添加订单
             </a>
-
-            <div style="float: right;width: 300px;">
-                <form method="get">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search for..."
-                               value="{{ search_data }}">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                      </span>
-                    </div>
-                </form>
-            </div>
 
         </div>
         <div class="panel panel-default">
@@ -59,7 +59,8 @@
                         </td>
                         <td>{{ obj.information.information }}</td>
                         <td>
-                            <a target='_blank' class="btn btn-info btn-xs" href="/courier/order/detail/{{ obj.order__order_num }}/">详情</a>
+                            <a target='_blank' class="btn btn-info btn-xs"
+                               href="/courier/order/detail/{{ obj.order__order_num }}/">详情</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -75,4 +76,5 @@
         </div>
 
     </div>
+    </body>
 {% endblock %}

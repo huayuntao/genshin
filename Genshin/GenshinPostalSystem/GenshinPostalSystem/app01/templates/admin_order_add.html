@@ -1,29 +1,55 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>跳转页面</title>
+    <style>
+        /* 添加背景图片 */
+        body {
+            background-image: url('/static/img/uoa.png'); /* 替换为你的背景图片链接 */
+            background-size: cover; /* 背景图片覆盖整个页面 */
+        }
+        .container {
+            text-align: center; /* 确保容器内的内容居中 */
+        }
+        .form-group {
+            display: inline-block;
+            text-align: left; /* 确保表单元素左对齐 */
+            margin-right: 20px; /* 如果需要，可以调整间距 */
+        }
+        .btn-center {
+            text-align: center; /* 提交按钮居中 */
+            display: block; /* 确保占据整行 */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight: bolder;font-size: 33px;"> 新建快递 </h3>
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                {% csrf_token %}
 
-    <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"> 新建靓号 </h3>
-            </div>
-            <div class="panel-body">
-                <form method="post">
-                    {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        <span style="color: red;">{{ field.errors.0 }}</span>
+                    </div>
+                {% endfor %}
 
-                    {% for field in form %}
-                        <div class="form-group">
-                            <label>{{ field.label }}</label>
-                            {{ field }}
-                            <span style="color: red;">{{ field.errors.0 }}</span>
-                        </div>
-                    {% endfor %}
-
+                <!-- 按钮居中的 div -->
+                <div class="btn-center">
                     <button type="submit" class="btn btn-primary">提 交</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-
+</div>
+</body>
 {% endblock %}

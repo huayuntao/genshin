@@ -1,6 +1,21 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+        <!DOCTYPE html>
+    <html>
+    <head>
+        <title>跳转页面</title>
+        <style>
+            /* 添加背景图片 */
+            body {
+                background-image: url('/static/img/usl3.jpg'); /* 替换为你的背景图片链接 */
+                background-size: cover; /* 背景图片覆盖整个页面 */
+                <!--background-position: center; /* 背景图片居中 */-->
+            }
+
+        </style>
+    </head>
+    <body>
     <div class="container">
         <div style="margin-bottom: 10px" class="clearfix">
             <a class="btn btn-success" href="/admin/order/add">
@@ -71,7 +86,6 @@
             <ul class="pagination">
                 {{ page_string }}
             </ul>
-
         </div>
 
     </div>

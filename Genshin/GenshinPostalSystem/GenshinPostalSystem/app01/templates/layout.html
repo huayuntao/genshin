@@ -25,7 +25,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <div style="display: flex; align-items: center;">
+                <!-- 图片 -->
+                <img src="/static/img/logo11.jpg" style="height: 35px; width: 35px;">
+                <!-- 文本 -->
+                <a class="navbar-brand" href="#"
+                   style="font-weight: bold; font-size: 33px; margin-left: 10px;">Genshin</a>
+            </div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,11 +56,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         {% if request.session.info.role == '1' %}
-                        普通用户：
+                            <img src="/static/img/tu.png" style="height: 20px;width: 20px;">
+                            普通用户：
                         {% elif request.session.info.role == '2' %}
-                        快递员：
+                            <img src="/static/img/lei.png" style="height: 20px;width: 20px;">
+                            快递员：
                         {% else %}
-                        管理员
+                            <img src="/static/img/huo.png" style="height: 20px;width: 20px;">
+                            管理员：
                         {% endif %}
                         {{ request.session.info.uname }}
                         <span class="caret"></span></a>

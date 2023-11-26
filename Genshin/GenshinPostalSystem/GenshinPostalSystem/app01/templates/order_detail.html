@@ -1,6 +1,20 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>跳转页面</title>
+        <style>
+            /* 添加背景图片 */
+            body {
+                background-image: url('/static/img/reg4.png'); /* 替换为你的背景图片链接 */
+                background-size: cover; /* 背景图片覆盖整个页面 */
+            }
+
+        </style>
+    </head>
+    <body>
     <div class="container">
 
         <div style="margin-bottom: 10px" class="clearfix">
@@ -11,7 +25,7 @@
             <!-- Default panel contents -->
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                {{ the_order_item.order_num }}  详情
+                {{ the_order_item.order_num }} 详情
             </div>
 
             <!-- Table -->
@@ -69,56 +83,54 @@
                 <tr>
                     <th>订单状态</th>
                     <td>
-                            {% if the_order_item.status == 1 %}
-                                <span style="background-color: #edd85c">派送中</span>
-                            {% elif the_order_item.status == 2 %}
-                                <span style="background-color: #ff6969">已送达</span>
-                            {% else %}
-                                <span style="background-color: #6fff6f">已取货</span>
-                            {% endif %}
-                        </td>
+                        {% if the_order_item.status == 1 %}
+                            <span style="background-color: #edd85c">派送中</span>
+                        {% elif the_order_item.status == 2 %}
+                            <span style="background-color: #ff6969">已送达</span>
+                        {% else %}
+                            <span style="background-color: #6fff6f">已取货</span>
+                        {% endif %}
+                    </td>
                 </tr>
                 </tbody>
             </table>
-            </div>
+        </div>
 
-    {% if request.session.info.role == '1' %}
-        <div style="height: 30px">
-        <a style="float: right"
-                class="btn btn-primary
+        {% if request.session.info.role == '1' %}
+            <div style="height: 30px">
+                <a style="float: right"
+                   class="btn btn-primary
         " href="/user/change/status/to/received/{{ the_order_item.id }}/">确认取件</a>
-        </div>
-    {% elif request.session.info.role == '2' %}
-        <div style="height: 30px">
-        <a style="float: right"
-                class="btn btn-primary
-        " href="/courier/add/information/to/order/{{ the_order_item.id }}/">添加状态</a>
-        <a style="float: right"
-                class="btn btn-primary
+            </div>
+        {% elif request.session.info.role == '2' %}
+            <div style="height: 30px">
+                <a style="float: right;margin-left: 20px"
+                   class="btn btn-danger
+        " href="/courier/add/information/to/order/{{ the_order_item.id }}/" d>添加状态</a>
+                <a style="float: right"
+                   class="btn btn-danger
         " href="/courier/change/status/to/served/{{ the_order_item.id }}/">确认送达</a>
-        </div>
-    {% else %}
-        <span>
+            </div>
+        {% else %}
+            <span>
             <a style="float: right"
-                    class="btn btn-primary
+               class="btn btn-primary
             btn-xs" href="/admin/order/edit/{{ the_order_item.id }}/">编辑订单信息</a>
         </span>
-    {% endif %}
+        {% endif %}
 
 
 
-            <div style="margin-top: 20px">
-                订单状态：
-                {% for item in the_order_status_set %}
-                    <div>
-                    {{ item.time }}  :  {{ item.information }} : {{ item.courier__real_name }}
-                    </div>
-                {% endfor %}
-            </div>
-
-
+        <div class="text">
+            <label for="orderRemarks" style="color: red;font-size: 33px" >订单状态：</label>
+            <textarea id="orderRemarks" name="orderRemarks" rows="4" cols="50" style="width: 1138px; height: 200px;">
+        {% for item in the_order_status_set %}
+            {{ item.time }}  :  {{ item.information }} : {{ item.courier__real_name }}
+        {% endfor %}
+    </textarea>
+        </div>
 
 
     </div>
-
+    </body>
 {% endblock %}
