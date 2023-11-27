@@ -97,11 +97,13 @@
         </div>
 
         {% if request.session.info.role == '1' %}
+        {% if request.session.info.uname ==  the_order_item.receiver__uname%}
             <div style="height: 30px">
                 <a style="float: right"
                    class="btn btn-primary
-        " href="/user/change/status/to/received/{{ the_order_item.id }}/">确认取件</a>
+                " href="/user/change/status/to/received/{{ the_order_item.id }}/">确认取件</a>
             </div>
+        {% endif %}
         {% elif request.session.info.role == '2' %}
             <div style="height: 30px">
                 <a style="float: right;margin-left: 20px"
