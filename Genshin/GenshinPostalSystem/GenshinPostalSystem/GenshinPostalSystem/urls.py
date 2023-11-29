@@ -66,4 +66,5 @@ urlpatterns = [
     path('register/', register),
     path('404/<str:exception>/', error404_with_cause),
     path('404/', error404),
+    
 ]

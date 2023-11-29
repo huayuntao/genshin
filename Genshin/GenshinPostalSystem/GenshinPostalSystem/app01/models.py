@@ -1,18 +1,32 @@
 from django.db import models
+from django.core.validators import RegexValidator
 
+# 手机号验证器
+phone_number_validator = RegexValidator(
+    regex=r'^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$',
+    message='手机号格式错误'
+)
 
 class NormalUser(models.Model):
     uname = models.CharField(max_length=64, verbose_name='用户名', unique=True)
     pwd = models.CharField(max_length=128, verbose_name='密码')
     real_name = models.CharField(max_length=16, verbose_name='真实姓名')
-    phone_num = models.CharField(max_length=16, verbose_name='手机号')
+    phone_num = models.CharField(
+        max_length=16,
+        verbose_name='手机号',
+        validators=[phone_number_validator]
+    )
 
 
 class Courier(models.Model):
     uname = models.CharField(max_length=64, verbose_name='用户名', unique=True)
     pwd = models.CharField(max_length=128, verbose_name='密码')
     real_name = models.CharField(max_length=16, verbose_name='真实姓名')
-    phone_num = models.CharField(max_length=16, verbose_name='电话号码')
+    phone_num = models.CharField(
+        max_length=16,
+        verbose_name='手机号',
+        validators=[phone_number_validator]
+    )
 
 
 class Admin(models.Model):
