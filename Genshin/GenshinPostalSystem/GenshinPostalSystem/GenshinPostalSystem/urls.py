@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from app01.views.about_us import about_us
 from app01.views.account import login, logout, register
 from app01.views.admin_courier import admin_courier_edit, admin_courier_delete, admin_courier_add, admin_courier_list
 from app01.views.admin_order import admin_order_total, admin_order_edit, admin_order_delete, admin_order_add, \
@@ -66,5 +67,5 @@ urlpatterns = [
     path('register/', register),
     path('404/<str:exception>/', error404_with_cause),
     path('404/', error404),
-    
+    path('about-us/', about_us),
 ]

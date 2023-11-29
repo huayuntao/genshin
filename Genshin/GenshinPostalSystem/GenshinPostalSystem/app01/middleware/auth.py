@@ -14,10 +14,12 @@ class AuthMiddleware(MiddlewareMixin):
     def process_request(self, request):
         # 调试语句
         # return
+        # if request.path_info in ["/about-us/"]:
+        #     return
         info_dict = request.session.get("info")
         if request.path_info in ["/"]:
             return redirect('/login/')
-        if request.path_info in ["/login/", "/logout/", "/register/"]\
+        if request.path_info in ["/login/", "/logout/", "/register/", "/about-us/"]\
                 or re.match(r'^/404', request.path_info):
             return
         if not info_dict:
