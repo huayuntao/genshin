@@ -81,7 +81,7 @@ def change_status_to_served(request, order_id):
         order_to_update.save()
         new_order_status = models.OrderStatus(time=timezone.now(), order_id=order_id, courier_id=user_id, information='我已将快递送达，请及时取件')
         new_order_status.save()
-        return redirect('/courier/order/detail/{}'.format(order_id))
+        return redirect('/courier/order/detail/{}'.format(order_to_update.order_num))
     else:
         return redirect('/404/订单已经送达或者已经被取走/')
 
@@ -98,6 +98,7 @@ def courier_order_detail(request, the_num):
                                                                          'receive_addr', 'status').first()
     if not the_order_item:
         return redirect('/404/未找到这一个快递/')
+    print("找到快递")
     the_id = the_order_item['id']
     the_order_status_set = models.OrderStatus.objects.all().filter(order_id=the_id).values(
         'time', 'courier__real_name', 'information'
@@ -112,7 +113,7 @@ def courier_order_detail(request, the_num):
 def courier_managed_order(request):
     user_id = request.session.get("info")['id']
     queryset = models.OrderStatus.objects.all().filter(courier_id=user_id).values('order__order_num', 'order__receive_addr', 'order__receiver__real_name', 'order__status', 'information').order_by('-time')
-    print(queryset)
+    #print(queryset)
     page_object = Pagination(request, queryset)
     context = {
         "queryset": page_object.page_queryset,  # 分完页的数据

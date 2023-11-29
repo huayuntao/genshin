@@ -141,6 +141,7 @@ def change_status_to_received(request, order_id):
     order_to_update = models.Order.objects.get(id=order_id)
     if order_to_update.status == 2:
         order_to_update.status = 3
+        order_to_update.receive_time = timezone.now()
         order_to_update.save()
         new_order_status = models.OrderStatus(time=timezone.now(), order_id=order_id, information='用户已经取件')
         new_order_status.save()
