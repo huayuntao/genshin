@@ -24,6 +24,6 @@ genshinstart!!!!!!!!!
 + 快递员可以根据订单编号进行增加动态
 + 用户可以新建快递，查询自己的快递
 
-## github仓库地址
+## 项目展示地址
 
-https://github.com/huayuntao/genshin
+http://43.143.134.44:8070/
