@@ -29,3 +29,5 @@ genshinstart!!!!!!!!!
 http://43.143.134.44:8070/
 
 http://81.70.31.60:1000/
+
+https://gpsys.xjsc01.top/  (海外)
