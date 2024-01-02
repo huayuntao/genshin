@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="genshin">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/genshin.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
