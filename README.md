@@ -1,20 +1,17 @@
-# genshin
-``````
-genshinstart!!!!!!!!!
-```````
 # 关于我们
-
-## 声明
-
-此项目仅仅用于NPU2023年数据库原理实验U10P31010.04课程的大作业，不用于商业用途，如果在此项目中出现侵权现象，请联系`xjsc01@126.com`，我会尽快处理。
 
 ## 开发人员
 
 郝春博`550566903@qq.com`  https://github.com/xjsc01/
 
-刘伟业 
+刘伟业 https://github.com/Waitsnow1228
 
 化运涛  https://github.com/huayuntao
+
+## 分支介绍
+
+- v1.0分支：完全独立开发，版权所有。
+- main分支：在v1.0的基础上，包含丰富的效果，仅用于非盈利展示。
 
 ## 功能说明
 
@@ -32,8 +29,8 @@ https://git.xjsc01.top/513/genshin
 
 ## 项目展示地址
 
-http://43.143.134.44:8070/
+【v1.0 分支】http://43.143.134.44:8070/
 
-http://81.70.31.60:1000/
+【main分支】http://81.70.31.60:1000/
 
-https://gpsys.xjsc01.top/  (海外)
+【main分支】https://gpsys.xjsc01.top/  (海外)
