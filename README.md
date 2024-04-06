@@ -33,8 +33,6 @@ https://git.xjsc01.top/513/genshin
 
 ## 项目展示地址
 
-【v1.0 分支】http://43.143.134.44:8070/
+【v1.0 分支】 https://82.156.69.62:9003/ [请使用https访问]
 
-【main分支】http://81.70.31.60:1000/
-
-【main分支】https://gpsys.xjsc01.top/  (海外)
+【main分支】  http://81.70.31.60:1000/
