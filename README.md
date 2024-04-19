@@ -29,7 +29,6 @@
 
 https://github.com/huayuntao/genshin
 
-https://git.xjsc01.top/513/genshin
 
 ## 项目展示地址
 
